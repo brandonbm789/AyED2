@@ -71,7 +71,6 @@ int main(int argc, char *argv[]) {
     array_from_file(array, filepath);
 
     /* show the ordered array in the screen */
-    array_dump(array);
 
     
 
