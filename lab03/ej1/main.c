@@ -33,20 +33,19 @@ unsigned int data_from_file(const char *path, unsigned int indexes[], char lette
         printf("El archivo no existe\n");
         exit(EXIT_FAILURE);
     }
-    char format[max_size];
 
     unsigned int length = 0u;
     while(length < max_size && !feof(file)){
-        fscanf(file, "%u %c%c %c%c%c\n", &indexes[length], &format[0], &format[1], &format[2], &letters[length], &format[3]);
-        
+        int res fscanf(file, "%u -> *%c*\n", &indexes[length], &letters[length]);
+        if(res != 2 ){
+        printf("Error el formato no se cumple\n");
+            exit(EXIT_FAILURE);
+        }
         if (indexes[length] > max_size){
             printf("el indice de un caracter supera el max_size\n");
             exit(EXIT_FAILURE);
         }
-
-        if(format[0] != '-' || format[1] != '>' || format[2] != '*' || format[3] != '*'){
-            printf("el formato establecido no se cumple\n");
-            exit(EXIT_FAILURE);
+            
         }
         
         length++;
